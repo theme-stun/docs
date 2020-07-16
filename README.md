@@ -6,6 +6,10 @@
 
 > «Stun» is an elegant Hexo theme. It is crafted from scratch with love.
 
+<a href="https://github.com/theme-stun/hexo-theme-stun-docs/actions" target="_blank" rel="noopener noreferrer">
+  <img src="https://github.com/theme-stun/hexo-theme-stun-docs/workflows/Build%20and%20deploy/badge.svg" alt="Github Actions | build & deploy docs">
+</a>
+
 ## License
 
 [MIT](https://github.com/theme-stun/hexo-theme-stun-docs/blob/master/LICENSE) Copyright (c) 2020 liuyib
