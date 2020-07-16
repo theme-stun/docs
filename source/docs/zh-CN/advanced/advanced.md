@@ -490,7 +490,7 @@ feed:
 
 想要使用邮件订阅，你需要自己构建 或 使用第三方提供的邮件订阅服务。例如我的邮件订阅地址：[http://eepurl.com/guAE6j](http://eepurl.com/guAE6j)
 
-开启 RSS 订阅之前，你需要安装 hexo 插件：[hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed)。然后在 Hexo 根目录下的 `_config.yml` 文件中添加配置项（关于各个配置项的具体含义，请查看插件的[文档](https://github.com/hexojs/hexo-generator-feed)）：
+开启 RSS 订阅之前，你需要安装 Hexo 插件：[hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed)。然后在 Hexo 根目录下的 `_config.yml` 文件中添加配置项（关于各个配置项的具体含义，请查看插件的[文档](https://github.com/hexojs/hexo-generator-feed)）：
 
 ``` yaml
 feed:
@@ -545,7 +545,7 @@ post_meta:
     icon: far fa-calendar-check
   # 文章预计的阅读时间
   # 启用这个功能之前，你首先需要在 Hexo 根目录安装依赖：
-  # `npm install hexo-wordcount --save`，然后重启 hexo 服务器
+  # `npm install hexo-wordcount --save`，然后重启 Hexo 服务器
   reading_time:
     enable: false
     # 查找图标名称，请访问：https://fontawesome.com/icons
@@ -558,7 +558,7 @@ post_meta:
       en: 80
   # 文章字数统计
   # 启用这个功能之前，你首先需要在 Hexo 根目录安装依赖：
-  # `npm install hexo-wordcount --save`，然后重启 hexo 服务器
+  # `npm install hexo-wordcount --save`，然后重启 Hexo 服务器
   word_count:
     enable: false
     # 查找图标名称，请访问：https://fontawesome.com/icons
@@ -694,7 +694,7 @@ post_widget:
 
 ## 文章置顶 <Badge text="Stable"/>
 
-想要使用文章置顶功能，首先你需要安装 hexo 插件 [hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top)，然后执行命令：
+想要使用文章置顶功能，首先你需要安装 Hexo 插件 [hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top)，然后执行命令：
 
 ``` bash
 $ npm uninstall hexo-generator-index --save
@@ -864,7 +864,7 @@ tag_cloud:
 - 设置图片大小
 
   1. 使用 HTML 中的 `img` 标签，通过 `style` 属性控制图片大小。
-  2. 使用 hexo 提供的语法 `{% https://xxxxx.png width height %}`，填入宽、高即可设置大小。
+  2. 使用 Hexo 提供的语法 `{% img https://xxxxx.png width height %}`，填入宽、高即可设置大小。
   3. Stun 主题提供了一个便捷的方法，你可以在图片路径后面使用查询参数：`?size=宽度x高度` <Badge text="Stable"/> <Badge text="v1.0.0"/> 来控制图片显示大小。例如：
 
       ``` md

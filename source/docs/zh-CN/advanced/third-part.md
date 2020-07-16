@@ -855,7 +855,7 @@ math:
      engine: katex # 字母全小写
    ```
 
-3. 重启 hexo 服务器
+3. 重启 Hexo 服务器
 
    ```bash
    $ hexo clean && hexo s

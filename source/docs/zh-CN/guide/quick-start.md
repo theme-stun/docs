@@ -10,12 +10,12 @@
   $ git clone https://github.com/liuyib/hexo-theme-stun.git themes/stun
   ```
 
-- 安装依赖 `hexo-render-pug`
+- 安装依赖 `hexo-renderer-pug`
 
   在 Hexo 根目录下，执行指令：
 
   ``` bash
-  $ npm install --save hexo-render-pug
+  $ npm install --save hexo-renderer-pug
   ```
 
 ## 使用

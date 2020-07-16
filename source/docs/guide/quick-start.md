@@ -4,29 +4,29 @@
 
 - Install `Stun`
 
-  Enter your hexo directory, run this.
+  Enter your Hexo directory, run this.
 
   ``` bash
   $ git clone https://github.com/liuyib/hexo-theme-stun.git themes/stun
   ```
 
-- Install dependency `hexo-render-pug`
+- Install dependency `hexo-renderer-pug`
 
-  Enter your hexo directory, run this.
+  Enter your Hexo directory, run this.
 
   ``` bash
-  $ npm install --save hexo-render-pug
+  $ npm install --save hexo-renderer-pug
   ```
 
 ## How to use
 
-Change the `_config.yml` file in your hexo root directory.
+Change the `_config.yml` file in your Hexo root directory.
 
 ``` yml
 theme: stun
 ```
 
-Run your hexo server.
+Run your Hexo server.
 
 ``` bash
 $ hexo clean && hexo s
