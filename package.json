@@ -2,14 +2,14 @@
   "name": "hexo-theme-stun-docs",
   "version": "3.0.0-beta.0",
   "description": "An elegant theme for Hexo",
-  "homepage": "https://github.com/theme-stun/hexo-theme-stun-docs",
+  "homepage": "https://github.com/theme-stun/docs",
   "scripts": {
     "dev": "vuepress dev source/docs",
     "build": "vuepress build source/docs"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/theme-stun/hexo-theme-stun-docs"
+    "url": "https://github.com/theme-stun/docs"
   },
   "keywords": [
     "Stun",
@@ -18,7 +18,7 @@
   "author": "liuyib",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/theme-stun/hexo-theme-stun-docs/issues"
+    "url": "https://github.com/theme-stun/docs/issues"
   },
   "devDependencies": {
     "vuepress": "^1.5.2"

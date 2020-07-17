@@ -4,7 +4,8 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/icons/favicon-32x32.png' }],
   ],
-  base: '/hexo-theme-stun-docs/',
+  // 不在网站根域名下，需要指定该项
+  base: '/docs/',
   serviceWorker: false,
   locales: {
     '/': {
@@ -22,11 +23,11 @@ module.exports = {
     repo: 'https://github.com/liuyib/hexo-theme-stun',
     logo: '/icons/favicon-192x192.png',
     editLinks: true,
-    // 文档仓库和项目本身不在一个仓库，需要指定该项：
-    docsRepo: 'https://github.com/theme-stun/hexo-theme-stun-docs',
-    // 文档不是放在仓库的根目录下，需要指定该项：
+    // 文档仓库和项目本身不在一个仓库，需要指定该项
+    docsRepo: 'https://github.com/theme-stun/docs',
+    // 文档不是放在仓库的根目录下，需要指定该项
     docsDir: 'source/docs',
-    // 文档所在的分支
+    // 文档源文件（未构建的）所在的分支
     docsBranch: 'master',
     sidebarDepth: 3,
     locales: {
