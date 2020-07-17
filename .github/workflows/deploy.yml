@@ -31,11 +31,11 @@ jobs:
         run: npm run build
 
       - name: Deploy the 'dist' directory
-        run: cd source\docs\.vuepress\dist
-        run: git init
-        run: git config user.name "${{ secrets.MY_USER_NAME }}"
-        run: git config user.email "${{ secrets.MY_USER_EMAIL }}"
-        run: git add -A
-        run: git commit -m "Update docs"
-        # Push local 'master' branch to origin 'gh-pages' branch
-        run: git push --force "https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/theme-stun/hexo-theme-stun-docs.git" master:gh-pages
+        run: |
+          cd source\docs\.vuepress\dist
+          git init
+          git config user.name "${{ secrets.MY_USER_NAME }}"
+          git config user.email "${{ secrets.MY_USER_EMAIL }}"
+          git add -A
+          git commit -m "Update docs"
+          git push --force "https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/theme-stun/hexo-theme-stun-docs.git" master:gh-pages
