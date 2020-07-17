@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,16 +13,15 @@ jobs:
       - name: Setup Node.js v12.x
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
 
       - name: Cache node modules
         uses: actions/cache@v2
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+          path: "**/node_modules"
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node_modules-
-            ${{ runner.os }}-
+            ${{ runner.os }}-build-
 
       - name: Install dependencies
         run: npm install
@@ -30,12 +29,11 @@ jobs:
       - name: Build documentations
         run: npm run build
 
-      - name: Deploy the 'dist' directory
-        run: |
-          cd source\docs\.vuepress\dist
-          git init
-          git config user.name "${{ secrets.MY_USER_NAME }}"
-          git config user.email "${{ secrets.MY_USER_EMAIL }}"
-          git add -A
-          git commit -m "Update docs"
-          git push --force "https://${{ secrets.MY_GITHUB_TOKEN }}@github.com/theme-stun/hexo-theme-stun-docs.git" master:gh-pages
+      - name: Deploy documentations
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./source/docs/.vuepress/dist
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
+          user_name: ${{ secrets.MY_USER_NAME }}
+          user_email: ${{ secrets.MY_USER_EMAIL }}
+          commit_message: Update docs
