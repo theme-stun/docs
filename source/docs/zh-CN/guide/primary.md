@@ -1,21 +1,26 @@
 # 新手上路
 
-::: tip 前言
-- 修改配置文件、安装新的依赖等，都需要重启 Hexo 服务器。
-- 没有特别说明，配置项从 `v1.0.0` 版本开始支持。
-- 稳定的配置使用 <Badge text="Stable"/> 标明，表示基本不会变动。不稳定的配置使用 <Badge text="Beta" type="warn"/> 标明，表示未来可能会变动甚至删除。目前还不支持的配置使用 <Badge text="Not Support" type="error"/> 标明。被废弃的配置使用 <Badge text="Abandon" type="error"/> 标明。最早开始支持的版本号使用 <Badge text="v x.x.x"/> 标明。与主题无关的配置项使用 <Badge text="Disrelated" type="warning"/> 标明。
-:::
-
 ## 配置文件
 
-首先，你需要分清下面这两个配置文件的作用：
+首先，你需要分清下面两个配置文件的作用：
 
-- Hexo 根目录下的 `_config.yml`。这是 Hexo 配置文件，其配置对整个网站生效。
-- Stun 根目录下的 `_config.yml`。这是主题配置文件，其配置只对主题生效。
+- Hexo 根目录下的 `_config.yml`。这是 Hexo 的配置文件，对整个站点生效（无论使用哪个主题）。
+- Stun 根目录下的 `_config.yml`。这是 Stun 的配置文件，只对主题生效。
 
-在接下来的文档中，会说明你应该修改哪一个配置文件。
+在接下来的文档中，会指明你应该修改哪一个配置文件。
 
-## 添加新页面 <Badge text="Stable"/>
+## 文件目录
+
+在配置 Hexo 或 Stun 主题时，经常需要将一些资源文件放在网站根目录（或网站其他自定义目录）下，所以你需要知道：“Hexo 根目录下的 `source` 目录 和 主题目录下的 `source` 目录，这两个目录中的资源文件都会被生成到网站根目录下”。
+
+例如：有两个文件 `Hexo 根目录/source/favicon.ico` 和 `Hexo 根目录/themes/stun/source/images/xxx.png`，则你可以这样使用它们 `/favicon.ico` 和 `/images/xxx.png`。
+
+::: tip 建议
+- 推荐你将资源文件放在 Hexo 根目录下的 `source` 目录中，而不是主题目录下的 `source` 目录中（便于统一管理，即使更换主题，你引用的资源文件的路径也仍然有效）。
+- 如果你不清楚 Hexo 根目录下，各个文件（夹）的引用路径，那么你可以执行 `hexo g` 指令，该指令会将你的博客网站部署时，所需的文件生成到 `Hexo 根目录/public/` 目录下，这样它们的路径关系就很清晰了。
+:::
+
+## 添加新页面
 
 Stun 主题内置有：分类页、标签页。默认没有启用。如果想启用它们，你需要执行以下步骤：
 
@@ -23,7 +28,7 @@ Stun 主题内置有：分类页、标签页。默认没有启用。如果想启
 
     在 Hexo 根目录下：
 
-    ``` bash
+    ```bash
     # 启用分类页，执行这条指令
     $ hexo new page categories
 
@@ -49,7 +54,7 @@ Stun 主题内置有：分类页、标签页。默认没有启用。如果想启
 
     将 `categories` 或 `tags` 对应项取消注释：
 
-    ``` yaml
+    ```yaml
     # `||` 分隔符之前是页面路径，`||` 分隔符之后是图标
     # 用法（有图标）: `Key: /路径/ || fa(s|r|l|d|b) fa-图标名称`
     # 用法（无图标）: `Key: /路径/`
@@ -68,7 +73,7 @@ Stun 主题内置有：分类页、标签页。默认没有启用。如果想启
 
 1. 修改主题配置文件
 
-    ``` yaml
+    ```yaml
     menu:
       reading: /reading/ || fas fa-book
     ```
@@ -77,7 +82,7 @@ Stun 主题内置有：分类页、标签页。默认没有启用。如果想启
 
     在 Hexo 根目录下执行指令：
 
-    ``` bash
+    ```bash
     # 这里的 reading 对应上一步你设置的路径名称
     $ hexo new page reading
     ```
@@ -88,7 +93,7 @@ Stun 主题内置有：分类页、标签页。默认没有启用。如果想启
 
     `zh-CN.yml`：
 
-    ``` yaml
+    ```yaml
     menu:
       reading: 阅读
     ```
@@ -97,7 +102,7 @@ Stun 主题内置有：分类页、标签页。默认没有启用。如果想启
 
 另外，你可以通过修改主题配置文件里的 `menu_settings` 选项，来设置图标和文字是否显示：
 
-``` yaml
+```yaml
 menu_settings:
   # 是否只显示图标
   icon_only: false
@@ -105,29 +110,47 @@ menu_settings:
   text_only: false
 ```
 
-## Favicon <Badge text="Stable"/>
+## Favicon
 
-主题默认使用 Stun 的 Logo 作为网站图标，你需要换成自己的。
+主题默认使用 Stun 的 Logo 作为网站的 [Favicon](https://en.wikipedia.org/wiki/Favicon)，你可以换成自己的。注意，这里的 Favicon 不再局限于浏览器中的 `favicon.ico`，而是适用于所有平台（所有浏览器、所有操作系统）的图标。
 
-建议你在 **Hexo 根目录**下的 `source` 目录中，新建一个文件夹用于放置图片，例如 `assets`，然后你就可以通过 `/assets/xxx.png` 这样的路径使用图片。将图片路径填入你的主题配置文件：
+想要设置网站的 Favicon，请按照以下步骤操作：
 
-``` yaml
-favicon:
-  small: /assets/favicon-16x16.png                  # 16x16 像素大小的图片
-  medium: /assets/favicon-32x32.png                 # 32x32 像素大小的图片
-  # ! -----------------------------------------------------------------------
-  # 下面这些配置项默认不启用，你需要准备好相应的图片后才能启用，也可以直接忽略。
-  # ! -----------------------------------------------------------------------
-  # apple_touch_icon: /assets/apple-touch-icon.png  # 180x180 像素大小的图片
-  # safari_pinned_tab: /assets/stun-logo.svg        # SVG 格式的图片
-  # msapplication: /assets/favicon-144x144.png      # 144x144 像素大小的图片
-```
+1. 访问 [Favicon Generator](https://realfavicongenerator.net/) 网站，生成适用所有平台的 Favicon 和配置文件。
+2. 将上一步生成的图片和配置文件，放在 Hexo 根目录下的 `source` 目录中。
+
+    > 当然，你也可以将这些文件放在其他位置，但你必须知道如何引用它们。
+    >
+    > 如果你不清楚各个目录中文件的引用路径，请看 [Stun docs - 文件目录](https://theme-stun.github.io/docs/zh-CN/guide/primary.html#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
+
+3. 修改 Stun 的配置文件：
+
+    ```yaml
+    favicon:
+      small: /assets/favicon-16x16.png                   # 16x16 像素大小的图片
+      medium: /assets/favicon-32x32.png                  # 32x32 像素大小的图片
+      # ! ----------------------------------------------------------------------
+      # ! 下面的配置项默认没有启用，如果你不想麻烦，可以直接忽略。
+      # ! 想要启用，取消注释即可，但启用前必须准备好相应的图片或配置文件。
+      # ! ----------------------------------------------------------------------
+      apple_touch_icon: /assets/favicon-180x180.png      # 180x180 像素大小的图片
+      safari_pinned_tab:
+        image: /assets/favicon.svg                       # SVG 格式的图片
+        # 表示在 Mac OS 上的 Safari 浏览器中，固定的标签页被选中时，图标的颜色
+        # 表示在 MacBook 上的 Touch Bar 中，图标的背景颜色
+        color: "#54bcff"
+      msapplication:
+        image: /assets/favicon-144x144.png               # 144x144 像素大小的图片
+        # 表示在 Windows 8/10 的开始菜单中，磁贴的背景颜色
+        color: "#54bcff"
+        config: /browserconfig.xml                       # 必须放在网站的根目录
+    ```
 
 ## 网站顶部设置
 
 修改主题配置文件：
 
-``` yaml
+```yaml
 header:
   enable: true
   show_on:
@@ -165,19 +188,19 @@ header:
 
 - 如果设置 `header.enable: true` 和 `header.show_on.post: false`，则文章页不显示网站 Header，其它页面仍会显示。效果如下：
 
-    **文章页：**
+  **文章页：**
 
-    ![Stun | no site header in article](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20200203194337.jpg)
+  ![Stun | no site header in article](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20200203194337.jpg)
 
-    **首页（其他页面）：**
+  **首页（其他页面）：**
 
-    ![Stun | has site header in others](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20200203194338.jpg)
+  ![Stun | has site header in others](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20200203194338.jpg)
 
 ::: warning
 下面是一些选项的版本支持情况和注意事项：
 
 - `header.mask` <Badge text="v1.1.1"/>
-- `header.blur_effect` <Badge text="v1.1.1" type="error"/>  <Badge text="Abandon" type="error"/>
+- `header.blur_effect` <Badge text="v1.1.1" type="error"/> <Badge text="Abandon" type="error"/>
 - `header.scroll_down_icon` <Badge text="v1.5.4"/>
 - `header.nav_height` <Badge text="v1.0.0"/>，修改于 <Badge text="v1.7.0"/>
 - `header.enable` <Badge text="v1.7.0"/>，`header.show_on` <Badge text="v1.7.0"/>
@@ -200,7 +223,7 @@ top_image: https://xxxxx.jpg
 
 修改主题配置文件：
 
-``` yaml
+```yaml
 body:
   # 网站主体背景图片
   bg_image:
@@ -226,7 +249,7 @@ body:
 
 修改主题配置文件：
 
-``` yaml
+```yaml
 sidebar:
   enable: true
   # 侧边栏位置，可选值有：left 或 right
@@ -245,7 +268,7 @@ sidebar:
 
 侧边栏默认头像是 Stun 的 Logo，你需要换成自己的，修改主题配置文件：
 
-``` yaml
+```yaml
 author:
   enable: true
   # 侧边栏头像
@@ -266,13 +289,13 @@ author:
 
 修改主题配置文件：
 
-``` yaml
+```yaml
 # `||` 分隔符之前是具体链接，`||` 分隔符之后是图标。
 # 用法（有图标）: `Key: /路径/ || fa(s|r|l|d|b) fa-图标名称`
 # 用法（无图标）: `Key: /路径/`
 # fas far fal fad fab 是 FontAwesome 5.x 中图标的前缀，你需要根据具体图标自行设置。
 # 查找图标名称，请访问：https://fontawesome.com/icons
-# 
+#
 # 如果你找不到想要的图标，可以考虑用文字来代替图标显示，用法：
 # 通过添加 `origin:` 前缀即可显示文字。例如：`origin:知` 会以 `知` 代替图标显示。
 social:
@@ -303,7 +326,7 @@ social_setting:
 
 1. 修改主题配置文件
 
-    ``` yaml
+    ```yaml
     social:
       juejin: https://juejin.im/timeline || origin:掘
     ```
@@ -314,7 +337,7 @@ social_setting:
 
     `zh-CN.yml`：
 
-    ``` yaml
+    ```yaml
     social:
       juejin: 掘金
     ```
@@ -329,7 +352,7 @@ social_setting:
 
 修改主题配置文件：
 
-``` yaml
+```yaml
 footer:
   # 背景图片
   bg_image:
@@ -390,7 +413,7 @@ footer:
 
 修改主题配置文件：
 
-``` yaml
+```yaml
 back2top:
   enable: true
   # 显示的图标
