@@ -17,7 +17,7 @@
 
 ::: tip 建议
 - 推荐你将资源文件放在 Hexo 根目录下的 `source` 目录中，而不是主题目录下的 `source` 目录中（便于统一管理，即使更换主题，你引用的资源文件的路径也仍然有效）。
-- 如果你不清楚 Hexo 根目录下，各个文件（夹）的引用路径，那么你可以执行 `hexo g` 指令，该指令会将你的博客网站部署时，所需的文件生成到 `Hexo 根目录/public/` 目录下，这样它们的路径关系就很清晰了。
+- 如果你不清楚 Hexo 目录下各个文件（夹）的引用路径，那么你可以执行 `hexo g` 指令，该指令会将你的博客网站部署时所需的文件，生成到 `Hexo 根目录/public/` 目录下，这样它们的路径关系就很清晰了。
 :::
 
 ## 添加新页面
@@ -318,10 +318,6 @@ social_setting:
   icon_only: true
 ```
 
-::: danger <Badge text="Abandon" type="error"/>
-其中，配置项 `social_setting.text_align` 在 `v1.2.0` 版本废弃。
-:::
-
 当你添加一个默认没有的社交链接时，需要进行国际化设置。这里以添加链接 `掘金` 为例，步骤如下：
 
 1. 修改主题配置文件
@@ -347,6 +343,37 @@ social_setting:
 效果如下：
 
 ![Stun | i18n of social link](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190717165333.png)
+
+::: tip 一些建议（新手可以直接跳过）
+除了将一些网址放入社交链接，你还可以进行一些有趣且实用的设置：
+
+- 向你发送邮件
+
+    通过利用 [mailto:](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#E-mail_links) 协议，直接打开一个新的外发电子邮件窗口。
+
+    示例，修改主题配置文件：
+
+    ```yaml
+    social:
+      Gmail: mailto:liuyibo0616@gmail.com || origin:Gmail
+      QQmail: mailto:1656081615@qq.com || origin:QQ 邮箱
+    ```
+
+    注意：该功能需要【浏览器的支持】和【用户的浏览器启用 “允许网站要求成为协议的默认处理程序” 并设置 “发送邮件的默认应用（如：Gmail）”】，否则 `mailto:` 协议将不起作用，与 Stun 主题无关，请悉知。
+
+- 唤起客户端
+
+    通过 Web 浏览器唤起 PC 本地应用，该功能需要【被唤起应用】的支持。
+
+    示例，唤起 QQ 并向你发送消息（或添加你为好友），使用 `tencent://` 协议，将下面的 `xxxxxxxxxx` 替换为你的 QQ 号即可。修改主题配置文件：
+
+    ```yaml
+    social:
+      QQ: tencent://message?uin=xxxxxxxxxx || fab fa-qq
+    ```
+
+    注意：该功能需要【被唤起应用】的支持，请自行了解不同应用的唤起协议。如果你设置的唤起协议不起作用，与 Stun 主题无关，请悉知。
+:::
 
 ## 网站底部设置 <Badge text="Stable"/>
 
