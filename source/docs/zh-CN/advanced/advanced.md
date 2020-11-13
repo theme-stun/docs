@@ -130,204 +130,254 @@ updated: 2019-5-16 10:23:46
 Hexo 会使用 git commit 中，文件的最新提交时间作为更新日期，所以一般不需要手动指定 `updated` 属性。并且当你使用 `hexo new xxx` 指令生成文件时，Hexo 会帮你添加好 `title` 和 `date` 属性。因此这三个属性一般不需要手动设置。
 :::
 
-- `comments` <Badge text="Stable"/> - 是否开启评论功能
+### `comments` <Badge text="Stable"/> - 是否开启评论功能
 
-  在 Stun 主题中，如果你启用了某个评论系统，默认是对所有通过 Markdown 文件生成的页面（除首页，归档页，单个分类页，单个标签页以外的所有页面）生效。因此，你可以使用该属性单独设置某个页面 / 文章是否启用评论。例如：
+在 Stun 主题中，如果你启用了某个评论系统，默认是对所有通过 Markdown 文件生成的页面（除首页，归档页，单个分类页，单个标签页以外的所有页面）生效。因此，你可以使用该属性单独设置某个页面 / 文章是否启用评论。例如：
 
-  ```
-  ---
-  title: Hello Stun
-  comments: false
-  ---
-  ```
+```
+---
+title: Hello Stun
+comments: false
+---
+```
 
-- `excerpt` <Badge text="Hexo v4.0.0"/> - 指定文章摘要
+### `excerpt` <Badge text="Hexo v4.0.0"/> - 指定文章摘要
 
-  Hexo 3.9.0 及以前的版本中，只能通过添加 `<!-- more -->` 标记来保留文章摘要。在 Hexo 4.0.0 及以后的版本中，可以通过在 Front-Matter 中使用 `excerpt` 来设置文章摘要。例如：
+Hexo 3.9.0 及以前的版本中，只能通过添加 `<!-- more -->` 标记来保留文章摘要。在 Hexo 4.0.0 及以后的版本中，可以通过在 Front-Matter 中使用 `excerpt` 来设置文章摘要。例如：
 
-  ```
-  ---
-  title: Hello Stun
-  excerpt: 这是一段文章摘要，是通过 Front-Matter 的 excerpt 属性设置的。
-  ---
-  ```
+```
+---
+title: Hello Stun
+excerpt: 这是一段文章摘要，是通过 Front-Matter 的 excerpt 属性设置的。
+---
+```
 
-- `permalink` <Badge text="Stable"/> - 覆盖 Markdown 文件名
+### `permalink` <Badge text="Stable"/> - 覆盖文章链接
 
-  例如，你有两篇文章：`https://xxx/2020/02/03/foo` 和 `https://xxx/2020/02/03/bar`，它们分别由 `foo.md` 和 `bar.md` 文件生成。如果你在 `bar.md` 的 Front-Matter 中设置了 `permalink`：
+例如，你有两篇文章：`https://xxx/2020/02/03/foo` 和 `https://xxx/2020/02/03/bar`，它们分别由 `foo.md` 和 `bar.md` 文件生成。如果你在 `bar.md` 的 Front-Matter 中设置了 `permalink`：
 
-  ```
-  ---
-  title: I'm bar, but link to foo
-  date: 2020-02-03 15:39:40
-  permalink: /foo
-  ---
-  ```
+```
+---
+title: I'm bar, but link to foo
+date: 2020-02-03 15:39:40
+permalink: /foo
+---
+```
 
-  这样，`foo.md` 和 `bar.md` 文件都会被解析为：`https://xxx/2020/02/03/foo`。
+这样，`foo.md` 和 `bar.md` 文件都会被解析为：`https://xxx/2020/02/03/foo`。
 
-- `categories` <Badge text="Stable"/> - 设置文章分类
+### `categories` <Badge text="Stable"/> - 设置文章分类
 
-  文章分类有顺序性和层次性。下面是一些例子：
+文章分类有顺序性和层次性。下面是一些例子：
 
-  - 嵌套分类
-
-    ```
-    ---
-    categories:
-      - Diary
-      - Life
-    ---
-    ```
-
-    这样会使分类 `Life` 成为 `Diary` 的子分类。
-
-  - 并列分类
-
-    ```
-    ---
-    categories:
-      - [Diary]
-      - [Life]
-    ---
-    ```
-
-    这样会使 `Life` 和 `Diary` 成为并列分类。
-
-  - 并列嵌套分类
-
-    ```
-    ---
-    categories:
-      - [Diary, PlayStation]
-      - [Diary, Games]
-      - [Life]
-    ---
-    ```
-
-    这样会使 `PlayStation` 和 `Games` 同为 `Diary` 的子分类，而 `Life` 和 `Diary` 是并列分类。
-
-- `tags` <Badge text="Stable"/> - 设置文章标签
-
-  标签没有顺序性和层次性，**只能设置为同级的**。也就是说，标签只有一种用法：
+- 嵌套分类
 
   ```
   ---
-  tags:
-    - PlayStation
-    - Games
-    - [Diary, Life]
+  categories:
+    - Diary
+    - Life
   ---
   ```
 
-  这样会被解析为 `PlayStation`、`Games`、`Diary,Life` 三个并列标签。
+  这样会使分类 `Life` 成为 `Diary` 的子分类。
 
-- `layout` <Badge text="Stable"/> - 是否对文章或页面应用布局样式
-  
-  - 在 Front-Matter 中设置了 `layout: false`
+- 并列分类
 
-    ![Stun | Front-Matter - layout](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190820175118.png)
+  ```
+  ---
+  categories:
+    - [Diary]
+    - [Life]
+  ---
+  ```
 
-    可以看到，设置了 `layout: false` 后，只将 Markdown 解析成 HTML，不做其他处理。
+  这样会使 `Life` 和 `Diary` 成为并列分类。
 
-  - 在 Front-Matter 中设置了 `layout: true` 等价于 默认
+- 并列嵌套分类
+
+  ```
+  ---
+  categories:
+    - [Diary, PlayStation]
+    - [Diary, Games]
+    - [Life]
+  ---
+  ```
+
+  这样会使 `PlayStation` 和 `Games` 同为 `Diary` 的子分类，而 `Life` 和 `Diary` 是并列分类。
+
+### `tags` <Badge text="Stable"/> - 设置文章标签
+
+标签没有顺序性和层次性，**只能设置为同级的**。也就是说，标签只有一种用法：
+
+```
+---
+tags:
+  - PlayStation
+  - Games
+  - [Diary, Life]
+---
+```
+
+这样会被解析为 `PlayStation`、`Games`、`Diary,Life` 三个并列标签。
+
+### `layout` <Badge text="Stable"/> - 是否应用布局样式
+
+- 在 Front-Matter 中设置了 `layout: false`
+
+  ![Stun | Front-Matter - layout](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190820175118.png)
+
+  可以看到，设置了 `layout: false` 后，只将 Markdown 解析成 HTML，不做其他处理。
+
+- 在 Front-Matter 中设置了 `layout: true` 等价于 默认
 
 ---
 
 下面几种 Front-Matter 属性在 Hexo 文档中并没有出现（也许是 Hexo 的文档没有更新吧），但在 Hexo 提供的主题单元测试库中出现。按照测试文件的要求，一个合格的 Hexo 主题都应该支持它们。这些属性如下：
 
-- `link` <Badge text="Stable"/> <Badge text="v1.1.3"/> - 链接
+### `link` <Badge text="Stable"/> <Badge text="v1.1.3"/> - 设置标题链接
 
-  如果指定该属性，当点击该文章标题时，应该在新窗口或新的标签页中，打开所指定的链接地址。
+如果指定该属性，当点击该文章标题时，应该在新窗口或新的标签页中，打开所指定的链接地址。
 
-- `photos` <Badge text="Stable"/> <Badge text="v1.1.4"/> - 图片
+### `photos` <Badge text="Stable"/> <Badge text="v1.1.4"/> - 设置页面插图
 
-  用于指定一些图片，这些图片会显示在文章中（Stun 主题将其显示在文章最顶部）。使用如下：
+用于设置一些图片，插入到页面中（Stun 主题将其显示在**页面主体部分的最顶部**）。使用如下：
 
-  ``` yaml
-  photos:
-    - http://xxxxx1.jpg
-    - http://xxxxx2.jpg
-    - http://xxxxx3.jpg
-  ```
+``` yaml
+photos:
+  - http://xxxxx1.jpg
+  - http://xxxxx2.jpg
+  - http://xxxxx3.jpg
+```
 
-  默认情况下，这些图片会按照文档流的方式显示，效果如下：
+默认情况下，这些图片会按照文档流的方式显示，效果如下：
 
-  ![Stun | Front-Matter - photos](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190724170139.png)
+![Stun | Front-Matter - photos](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190724170139.png)
 
-  为了优化这些图片的显示效果，Stun 主题提供了**瀑布流布局** <Badge text="Stable"/> <Badge text="v1.1.4"/>，如果想启用这一布局，你需要修改主题配置文件：
+为了优化这些图片的显示效果，Stun 主题提供了**瀑布流布局** <Badge text="Stable"/> <Badge text="v1.1.4"/>，如果想启用这一布局，你需要修改主题配置文件：
 
-  ``` yaml
-  gallery_waterfall:
-    enable: false
-    # 瀑布流中每一列的宽度
-    col_width: 220px
-    # 图片之间的水平间隙
-    gap_x: 10px
-    # 图片之间的垂直间隙
-    gap_y: 10px
-  ```
+``` yaml
+gallery_waterfall:
+  enable: false
+  # 瀑布流中每一列的宽度
+  col_width: 220px
+  # 图片之间的水平间隙
+  gap_x: 10px
+  # 图片之间的垂直间隙
+  gap_y: 10px
+```
 
-  效果如下：
+效果如下：
 
-  ![Stun | gallery_waterfall demo](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190724170138.png)
+![Stun | gallery_waterfall demo](https://raw.githubusercontent.com/liuyib/picBed/master/hexo-theme-stun/doc/20190724170138.png)
 
-  ::: tip
-  - 启用瀑布流效果后，还可以再启用 [fancybox 效果](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/assist.html#fancybox)。
-  - 可以利用这个属性，来建立一个**相册页面**或**展示图片的文章**。例如：[https://liuyib.github.io/gallery/](https://liuyib.github.io/gallery/)
-  :::
+::: tip
+- 启用瀑布流效果后，还可以再启用 [fancybox 效果](https://theme-stun.github.io/docs/zh-CN/advanced/assist.html#fancybox)。
+- 可以利用这个属性，来建立一个**相册页面**或**展示图片的文章**。例如：[https://liuyib.github.io/gallery/](https://liuyib.github.io/gallery/)
+:::
 
 ---
 
 下面是 Stun 主题中，特有的几种 Front-Matter 属性。
 
-- `top_image: https://xxxx.jpg` <Badge text="Stable"/>
+### `top_image` <Badge text="Stable"/> - 页面顶部图
 
-  用于设置某篇文章顶部的大图。详情：[指定顶部图](https://liuyib.github.io/hexo-theme-stun/zh-CN/guide/primary-setting.html#指定顶部图)
+作用：设置某页面的顶部图。
 
-- `toc: true` <Badge text="Stable"/> <Badge text="v1.2.0"/>
+取值：`字符串`。
 
-  文章是否启用目录。会覆盖主题配置文件中的全局设置。详情：[文章目录](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/advanced-setting.html#文章目录)
+示例：`top_image: https://a.example.com/xxx.jpg`。
 
-- `toc_min_depth: 1` <Badge text="Stable"/> <Badge text="v1.7.0"/> <Badge text="Hexo v4.2.0"/> 
+详情：[指定顶部图](https://theme-stun.github.io/docs/zh-CN/guide/primary.html#指定顶部图)。
 
-  用于设置某篇文章中，解析标题生成目录的最小深度。取值 1 ~ 6，默认为 1。
+### `toc` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用目录
 
-  例如：`toc_min_depth: 3`，只会解析文中的 `h3, h4, h5, h6` 标签来生成目录。详情：[文章目录](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/advanced-setting.html#文章目录)
+作用：设置某**文章页面**是否启用目录。
 
-- `toc_max_depth: 6` <Badge text="Stable"/> <Badge text="v1.2.0"/>
+取值：`true | false`。
 
-  用于设置某篇文章中，解析标题生成目录的最大深度。取值 1 ~ 6，默认为 6。
+详情：[文章目录](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#文章目录)。
 
-  例如：`toc_max_depth: 4`，只会解析文中的 `h1, h2, h3, h4` 标签来生成目录。详情：[文章目录](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/advanced-setting.html#文章目录)
+### `toc_min_depth` <Badge text="Stable"/> <Badge text="v1.7.0"/> <Badge text="Hexo v4.2.0"/> - 生成目录最小深度
 
-- `quicklink: true` <Badge text="Stable"/> <Badge text="v1.2.3"/>
+作用：设置某文章中，解析标题生成目录的最小深度。
 
-  是否在浏览器空闲时间预取可视区内的链接，以加快后续页面的加载速度。详情：[启用 Quicklink](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/third-part.html#启用-quicklink)
+取值：`1 ~ 6`，默认值：`1`。
 
-- `math: true` <Badge text="Stable"/> <Badge text="v1.1.2"/>
+示例：`toc_min_depth: 3`，只会解析文中的 `h3, h4, h5, h6` 标签来生成目录。
 
-  是否需要解析数学公式。详情：[数学公式](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/third-part.html#数学公式)
+详情：[文章目录](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#文章目录)。
 
-- `reward: true` <Badge text="Stable"/> <Badge text="v1.2.0"/>
+### `toc_max_depth` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 生成目录最大深度
 
-  文章是否启用打赏功能。会覆盖主题配置文件中的全局设置。详情：[启用赞赏码](https://liuyib.github.io/hexo-theme-stun/zh-CN/guide/primary-setting.html#启用赞赏码)
+作用：设置某文章中，解析标题生成目录的最大深度。
 
-- `copyright: true` <Badge text="Stable"/> <Badge text="v1.2.0"/>
+取值：`1 ~ 6`，默认值：`6`。
 
-  文章是否启用版权信息。会覆盖主题配置文件中的全局设置。详情：[知识共享许可协议（cc）](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/advanced-setting.html#知识共享许可协议（cc）)
+示例：`toc_max_depth: 4`，只会解析文中的 `h1, h2, h3, h4` 标签来生成目录。
+
+详情：[文章目录](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#文章目录)。
+
+### `quicklink` <Badge text="Stable"/> <Badge text="v1.2.3"/> - 是否预取链接
+
+作用：是否在浏览器空闲时间内，预取页面可视区中的链接，以加快点击链接后页面的加载时间。
+
+取值：`true | false`。
+
+详情：[启用 Quicklink](https://theme-stun.github.io/docs/zh-CN/advanced/third-part.html#启用-quicklink)。
+
+### `math` <Badge text="Stable"/> <Badge text="v1.1.2"/> - 是否解析数学公式
+
+作用：是否解析某页面中的数学公式。
+
+取值：`true | false`。
+
+详情：[数学公式](https://theme-stun.github.io/docs/zh-CN/advanced/third-part.html#数学公式)。
+
+### `sidebar` <Badge text="Stable"/> <Badge text="v2.1.1"/> - 是否显示侧边栏
+
+作用：是否显示某页面中的侧边栏。会覆盖主题配置文件中的全局设置。
+
+取值：`true | false`。
+
+详情：[侧边栏设置](https://theme-stun.github.io/docs/zh-CN/guide/primary.html#侧边栏设置)。
+
+### `reward` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用打赏功能
+
+作用：是否启用某页面中的打赏功能。会覆盖主题配置文件中的全局设置。
+
+取值：`true | false`。
+
+详情：[启用赞赏码](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#启用赞赏码)。
+
+### `copyright` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用版权信息
+
+作用：是否启用某页面中的版权信息。会覆盖主题配置文件中的全局设置。
+
+取值：`true | false`。
+
+详情：[知识共享许可协议（cc）](https://theme-stun.github.io/docs/zh-CN/advanced/advanced-setting.html#知识共享许可协议（cc）)。
 
 ---
 
 下面是安装某些插件后，可以设置的几种 Front-Matter 属性。
 
-- `top: true` <Badge text="Stable"/>
+### `top` <Badge text="Stable"/> - 是否置顶文章
 
-  文章是否置顶。详情：[文章置顶](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/advanced-setting.html#文章置顶)
+作用：是否置顶文章。
 
-- `no-emoji: true` <Badge text="Disrelated" type="warning"/>
+取值：`true | false`。
 
-  是否解析文章中的 emoji 代码。详情：[添加-emoji-支持](https://liuyib.github.io/hexo-theme-stun/zh-CN/advanced/third-part.html#添加-emoji-支持)
+详情：[文章置顶](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#文章置顶)。
+
+### `no-emoji` <Badge text="Disrelated" type="warning"/> - 是否解析 emoji 代码
+
+作用：是否解析某页面中的 emoji 代码。
+
+取值：`true | false`。
+
+详情：[添加-emoji-支持](https://theme-stun.github.io/docs/zh-CN/advanced/third-part.html#添加-emoji-支持)。
 
 ## 二级导航菜单 <Badge text="Stable"/> <Badge text="v1.2.4"/>
 
