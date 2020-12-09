@@ -293,7 +293,7 @@ gallery_waterfall:
 
 ### `toc` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用目录
 
-作用：设置某**文章页面**是否启用目录。
+作用：设置某页面是否启用目录。会覆盖主题配置文件中的全局设置。
 
 取值：`true | false`。
 
@@ -508,6 +508,8 @@ toc:
   # 是否自动添加列表序号
   list_number: true
   # 是否文本溢出时换行
+  # true : 文本溢出时换行
+  # false: 文本溢出时不换行，显示横向滚动条
   wrap: true
   # 是否始终展开所有文章目录
   # true ：始终展开
@@ -521,8 +523,8 @@ toc:
   max_depth: 6
 ```
 
-::: tip
-启用文章目录后，默认对所有文章页面生效。你可以在 Front-Matter 中，设置 `toc: false` 来指定某篇文章不启用该功能。
+::: warning 注意
+开启该功能后，默认只对所有**文章页面**启用。如果需要单独设置某页面是否启用，详见：[Front-Matter - toc](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#toc-是否启用目录)
 :::
 
 ## 订阅设置 <Badge text="Stable"/>
