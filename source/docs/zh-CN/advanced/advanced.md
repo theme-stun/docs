@@ -293,11 +293,16 @@ gallery_waterfall:
 
 ### `toc` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用目录
 
-作用：设置某页面是否启用目录。会覆盖主题配置文件中的全局设置。
+- 作用：设置某页面是否启用目录。
+- 取值：`true | false`。
+- 说明：
 
-取值：`true | false`。
+  在主题配置文件中启用该功能后，默认只对所有**文章页面**生效。如果想要对**非文章页面**启用，则需要使用 Front-Matter 中的 `toc` 属性。因此可以总结为以下两种情况：
 
-详情：[文章目录](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#文章目录)。
+  - 文章页面中的目录。1. 通过 Front-Matter 单独设置（启用：`toc: true`，禁用：`toc: false`）。2. 通过主题配置文件全局设置（启用：`toc.enable: true`，禁用：`toc.enable: false`）。优先级 `Front-Matter` > `主题配置文件`。
+  - 非文章页中的目录，只能通过 Front-Matter 单独启用。
+
+- 详情：[文章目录](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#文章目录)。
 
 ### `toc_min_depth` <Badge text="Stable"/> <Badge text="v1.7.0"/> <Badge text="Hexo v4.2.0"/> - 生成目录最小深度
 
@@ -337,27 +342,39 @@ gallery_waterfall:
 
 ### `sidebar` <Badge text="Stable"/> <Badge text="v2.1.1"/> - 是否显示侧边栏
 
-作用：是否显示某页面中的侧边栏。会覆盖主题配置文件中的全局设置。
+- 作用：是否显示某页面中的侧边栏。
 
-取值：`true | false`。
+- 取值：`false`。
 
-详情：[侧边栏设置](https://theme-stun.github.io/docs/zh-CN/guide/primary.html#侧边栏设置)。
+- 说明：在主题配置文件中启用该功能后，默认对**所有页面**生效。如果想要指定某页面不启用侧边栏，则需要在 Front-Matter 中设置 `sidebar: false`。
+
+- 详情：[侧边栏设置](https://theme-stun.github.io/docs/zh-CN/guide/primary.html#侧边栏设置)。
 
 ### `reward` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用打赏功能
 
-作用：是否启用某页面中的打赏功能。会覆盖主题配置文件中的全局设置。
+- 作用：是否启用某页面中的打赏功能。
+- 取值：`true | false`。
+- 说明：
 
-取值：`true | false`。
+  在主题配置文件中启用该功能后，默认只对所有**文章页面**生效。如果想要对**非文章页面**启用，则需要使用 Front-Matter 中的 `reward` 属性。因此可以总结为以下两种情况：
 
-详情：[启用赞赏码](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#启用赞赏码)。
+  - 文章页面中的打赏功能。1. 通过 Front-Matter 单独设置（启用：`reward: true`，禁用：`reward: false`）。2. 通过主题配置文件全局设置（启用：`reward.enable: true`，禁用：`reward.enable: false`）。优先级 `Front-Matter` > `主题配置文件`。
+  - 非文章页中的打赏功能，只能通过 Front-Matter 单独启用。
+
+- 详情：[启用赞赏码](https://theme-stun.github.io/docs/zh-CN/advanced/advanced.html#启用赞赏码)。
 
 ### `copyright` <Badge text="Stable"/> <Badge text="v1.2.0"/> - 是否启用版权信息
 
-作用：是否启用某页面中的版权信息。会覆盖主题配置文件中的全局设置。
+- 作用：是否启用某页面中的版权信息。
+- 取值：`true | false`。
+- 说明：
 
-取值：`true | false`。
+  在主题配置文件中启用该功能后，默认只对所有**文章页面**生效。如果想要对**非文章页面**启用，则需要使用 Front-Matter 中的 `copyright` 属性。因此可以总结为以下两种情况：
 
-详情：[知识共享许可协议（cc）](https://theme-stun.github.io/docs/zh-CN/advanced/advanced-setting.html#知识共享许可协议（cc）)。
+  - 文章页面中的版权信息。1. 通过 Front-Matter 单独设置（启用：`copyright: true`，禁用：`copyright: false`）。2. 通过主题配置文件全局设置（启用：`creative_commons.enable: true`，禁用：`creative_commons.enable: false`）。优先级 `Front-Matter` > `主题配置文件`。
+  - 非文章页中的版权信息，只能通过 Front-Matter 单独启用。
+
+- 详情：[知识共享许可协议（cc）](https://theme-stun.github.io/docs/zh-CN/advanced/advanced-setting.html#知识共享许可协议（cc）)。
 
 ---
 
