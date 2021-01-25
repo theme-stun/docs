@@ -10,24 +10,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js v12.x
+      - name: Setup Node.js environment
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
 
-      - name: Cache node modules
+      - name: Cache modules
         uses: actions/cache@v2
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-deploy-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-
+            ${{ runner.os }}-deploy-
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build documentations
-        run: npm run build
+      - run: npm install
+      - run: npm run build
 
       - name: Deploy documentations
         uses: peaceiris/actions-gh-pages@v3
@@ -36,4 +33,4 @@ jobs:
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
           user_name: ${{ secrets.MY_USER_NAME }}
           user_email: ${{ secrets.MY_USER_EMAIL }}
-          commit_message: Update docs
+          commit_message: update docs (by ci)
