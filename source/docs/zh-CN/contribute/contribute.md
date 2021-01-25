@@ -43,7 +43,7 @@ $ npm install
   - `revert`：代码回滚（回退已经存在的 `commit`）
 - `subject` 用于简要描述修改变更的内容，如 `Update quick start in readme.md`
   - 句尾不要使用符号
-  - 使用现在时、祈使句语气
+  - 使用一般现在时、祈使句语气
 
 <!-- omit in toc -->
 ## 贡献人员
