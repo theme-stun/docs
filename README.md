@@ -10,6 +10,11 @@
   <img src="https://github.com/theme-stun/docs/workflows/deploy/badge.svg" alt="Github Actions | build & deploy">
 </a>
 
+## Mirrors
+
+- [Github pages - https://theme-stun.github.io/docs/](https://theme-stun.github.io/docs/)
+- [Gitee pages - https://theme-stun.gitee.io/docs/](https://theme-stun.gitee.io/docs/)
+
 ## License
 
 [MIT](https://github.com/theme-stun/docs/blob/master/LICENSE) Copyright (c) 2020 liuyib
