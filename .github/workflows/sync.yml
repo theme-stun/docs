@@ -20,4 +20,4 @@ jobs:
           gitee-username: liuyibo0616
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
           gitee-repo: theme-stun/docs
-          branch: master
+          branch: gh-pages
