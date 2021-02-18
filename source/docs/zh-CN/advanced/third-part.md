@@ -822,7 +822,7 @@ math:
    ```
 
 ::: warning
-在 Hexo 中，渲染器（名称带有 `hexo-renderer-` 前缀的）只能安装一个，否则可能会引起一些意想不到的问题。
+在 Hexo 中，Markdown 渲染器（`hexo-renderer-[marked/kramed/pandoc/unified/markdown/markdown-it/markdown-it-plus/...]`）只能安装一个，否则可能会引起一些意想不到的问题。
 :::
 
 ### KaTeX <Badge text="Stable"/> <Badge text="v1.1.2"/>
